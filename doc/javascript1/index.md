@@ -72,6 +72,19 @@ typeof !0	//boolean
 ```
 
 ### 第二节课：
+> * 掌握条件语句
+	* if...else
+	* switch...case
+	* 条件语句的嵌套
+> * 掌握逻辑表达式：与或非
+
+```js
+//switch...case,模拟加减乘除,与或非的运算
+switch(operator){
+	case '+':
+}
+```
+
 ### 第三节课：
 ### 第四节课：
 
