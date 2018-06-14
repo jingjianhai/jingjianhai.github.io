@@ -55,53 +55,72 @@ typeof !0	//boolean
 	* 运算符的优先级
 	* 运算符的结合
 	* 运算顺序 -> 同级运算符自左向右依次执行
-> * 掌握关系表达式
-	* 相等 == 和 ===
-	* 不相等!== 和 !===
-	* 逻辑与表达式 &&
-	* 逻辑或表达 ||
-> * 掌握赋值表达式，简单赋值和符合赋值
-> * 了解语句的概念
-> * 掌握常用系统组件prompt和alert
 
 ```js
 // 掌握如下组合运算
-1&&6+!2-3||5*4/5		
-// 运算结果3
+1&&6+!2-3||5*4/5	=>3
 // 执行顺序 ||>&&>(*、/)>!>(+、-)
 ```
 
-<<<<<<< HEAD
-### 第二节课：掌握关系表达式
-> * 相等 == 和 ===，理解啥时候用全等判断，啥时候用相等判断
+### 第二节课：掌握关系表达式和赋值表达式
+> * 相等 == 和 ===,返回值为boolean
+> * 理解啥时候用全等判断，啥时候用相等判断
 ```js
-true ==1 和 true === 1
+true == 1	=> true 
+true === 1	=> false
 ```
-> * 不相等!== 和 !===，理解啥时候用全不等判断，啥时候用不等判断
+> * 不相等!== 和 !===,返回值为boolean
+> * 理解啥时候用全不等判断，啥时候用不等判断
 ```js
-false !==1 和 false != 1
+false !== 1	=> false
+false != 1	=> true
 ```
-
-
-=======
-### 第二节课：
-> * 掌握条件语句
-	* if...else
-	* switch...case
-	* 条件语句的嵌套
-> * 掌握逻辑表达式：与或非
-
+> * 简单赋值运算符‘=’,把等式右边的值赋给左边
 ```js
-//switch...case,模拟加减乘除,与或非的运算
-switch(operator){
-	case '+':
-}
+var a = 1;
+var b = 2;
+```
+> * 复合赋值运算符，先计算等式右边的结果，再赋值给左边
+```js
+var a = 1*2+3;		=> a = 5
+var b = true === 1;	=> b = false
+```
+### 第三节课：其他常用运算符
+> * 条件运算符‘?’
+> * 条件运算符的嵌套
+```js
+var a = false?2:3;			=>a = 3;
+var b = true?false?true?100:50:0:-1;	=>b = 0
+```
+> * 逗号运算符‘,’,将若干表达式连接起来,注意优先级最低，必要时配合()操作符
+```js
+/*
+逗号表达式：
+	一般形式：表达式1，表达式2，表达式3，......表达式n
+	求解过程：先计算表达式1的值，再计算表达式2的值，......一直计算到表达式n的值。最后整个表达式的值是表达式n的值。*/
+var x;
+x = (1,2,3); 			=>x = 3;
+(x = 8*2, x*4) , x*2;		=>表达式 = 32
 ```
 
->>>>>>> e9ed947053d53ed7824332fec7c4e5cc135d72db
-### 第三节课：
+### 第四节课：常用系统弹框alert,prompt和confirm
+> * 掌握什么是alert
+> * 掌握什么是prompt
+> * 掌握什么是confirm
+> * 了解三种弹框的区别
+> * 掌握prompt和confirm的返回值
+```js
+// alert
+window.alert('我是alert弹框');
 
-### 第四节课：
+// confirm
+// 点击确定时result为true, 点击取消result为false
+var result = window.confirm('我是confirm弹框')
+
+// prompt
+// 点击确定时content为用户输入的手机号
+var content = window.prompt('请输入你的手机号码');
+```
 
 ---
 ## 第三单元 if语句的嵌套及switch语句
@@ -121,12 +140,12 @@ if (条件一){
 	switch里的条件匹配后续哪一个case，就执行该case内的语句
 
 ```js
-	switch(条件){
-		case 'case1': {case1的代码逻辑};break;
-		case 'case2': {case2的代码逻辑};break;
-		case 'case3': {case3的代码逻辑};break;
-		default: {都没匹配到时的代码逻辑}
-	}
+switch(条件){
+	case 'case1': {case1的代码逻辑};break;
+	case 'case2': {case2的代码逻辑};break;
+	case 'case3': {case3的代码逻辑};break;
+	default: {都没匹配到时的代码逻辑}
+}
 ```
 ### 第三节课：if...else, switch语句的综合应用：计算器
 ```js
@@ -180,10 +199,69 @@ console.log('result...', result);
 
 ---
 ## 第四单元 循环语句
-### 第一节课：
-### 第二节课：
-### 第三节课：
-### 第四节课：
+### 第一节课：认识循环
+> * 为什么要学习循环？
+> * 什么是循环？
+> * 循环的几个要素
+	* 起始条件, 一般从0开始
+	* 终止条件
+	* 循环条件
+	* 循环体
+	* 循环次数
+### 第二节课：循环中的for语句
+> * for循环的使用
+> * for循环的嵌套
+> * for循环中的无限循环
+```js
+// 输出9*9乘法表
+for (var i=1;i<10;i++){
+	var str = '';
+	for (var j=1;j<=i;j++){
+		str += i+' * '+j+' = '+i*j+'  ';
+		if (i*j<10){
+			str += ' ';
+		}
+	}
+	console.log(str);
+}
+```
+### 第三节课：循环中的while语句
+> * while循环的使用
+> * while循环的嵌套
+> * while循环的无限循环
+> * do...while循环
+> * do...while循环必须执行一次的问题
+```js
+var i=1;
+while(i<=10){
+	console.log(i);
+	i++;
+}
+```
+### 第四节课：break和continue
+> * 跳出当前循环，不再执行循环操作用break
+> * 跳过当前循环，执行下一条循环用continue
+
+```js
+/* 0到10的叠加，在5的时候分别break和continue */
+// break sum=10
+var sum = 0;
+for (var i=0;i<=10;i++){
+	if (i==5){
+		break;
+	}
+	sum += i;
+}
+
+// continue	sum=50
+var sum = 0;
+for (var i=0;i<=10;i++){
+	if (i==5){
+		continue;
+	}
+	sum += i;
+}
+```
 
 ---
 ## 第五单元 函数
