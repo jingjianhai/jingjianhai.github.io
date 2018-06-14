@@ -109,6 +109,7 @@ x = (1,2,3); 			=>x = 3;
 > * 掌握什么是confirm
 > * 了解三种弹框的区别
 > * 掌握prompt和confirm的返回值
+
 ```js
 // alert
 window.alert('我是alert弹框');
