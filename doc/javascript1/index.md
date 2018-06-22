@@ -292,9 +292,39 @@ for (var i=0;i<=10;i++){
 ---
 ## 第六单元 String与Number
 ### 第一节课：字符串创建
-### 第二节课：字符串解析
+> * 什么是字符串
+> * String对象
+> * 创建字符串的几种方式
+> * length属性
+
+### 第二节课：字符串查找
+> * charAt()
+> * indexOf()
+> * lastIndexOf()
+> * match()
+
 ### 第三节课：字符串操作方法
+> * replace()
+> * substr()
+> * slice()
+> * substring()
+> * toUpperCase()
+> * toLowerCase()
+
 ### 第四节课:Math对象的常用方法
+> * Math.ceil()
+> * Math.floor()
+> * Math.round()
+> * Math.min()
+> * Math.max()
+> * Math.abs()
+> * Math.random()
+
+```js
+// 利用Math.random实现抽奖案例中的随机抽取逻辑
+// 从1到10中随机抽取一位数
+   var lucky = Math.floor(Math.random()*10+1)
+```
 
 ---
 ## 第七单元 数组
