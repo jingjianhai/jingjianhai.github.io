@@ -46,7 +46,7 @@ typeof !0	//boolean
 
 ---
 ## 第二单元 表达式下、运算符与简单的if语句
-### 第一节课：
+### 第一节课：表达式下
 > * 基础类型转换
 > * 掌握什么是表达式
 > * 掌握运算操作符
@@ -408,19 +408,135 @@ uniqItem(5);
 
 ## 第八单元 数组的综合应用
 ### 第一节课：数组查找和翻转
-### 第二节课：数组排序
-### 第三节课：数组排重
+> * indexOf
+> * lastIndexOf
+### 第二节课：数组排序一
+> * 冒泡排序
+> * 选择排序
+> * 插入排序
+### 第三节课：数组排序二
+> * 快速排序
+> * 原生sort排序
+> * 各排序之间的简单对比
 ### 第四节课：数组迭代方法
+> * forEach 
+> * map
+> * filter
+> * some
+> * every
 ---
 ## 第九单元 日期和时间
 ### 第一节课：认识日期对象
+> * 什么是日期对象？
+> * 创建日期对象
+	* new Date()
+	* new Date(milliseconds)
+	* new Date(year, month, day, hours, minutes, seconds, milliseconds)
+> * 时间戳的概念, 注意时间戳的最小单位，js是到毫秒，大多数服务端脚本是精确到秒
+> * 隐式转换
+```js
+	// 直接把日期对象转化为时间戳
+	+ new Date();
+```
 ### 第二节课：日期对象继承对象的方法
+> * toLocaleString()
+> * toString
+> * valueof
+> * setTimeout
+> * setInterval
 ### 第三节课：日期的方法一
+> * getFullYear()
+> * setFullYear()
+> * getFullMonth()
+> * setFullMonth()
+> * getDate()
+> * setDate()
+> * getDay()
+> * setDay()
+
 ### 第四节课：日期的方法二
+> * getTime()
+> * setTime()
+> * getHours()
+> * setHours()
+> * getMinutes()
+> * setMinutes()
+> * getSeconds()
+> * setSeconds()
+> * getMillSeconds()
+> * setMillSeconds()
+
+```js
+// 案例：格式化当前时间 YYYY-MM-DD HH:MM:SS
+var date = new Date();
+var year = date.getFullYear(),
+	month = date.getMonth()+1,
+	day = date.getDate(),
+	hour = date.getHours(),
+	min = date.getMinutes(),
+	sec = date.getSeconds();
+	month<10?month='0'+month:null;
+	day<10?day='0'+day:null;
+	hour<10?hour='0'+hour:null;
+	min<10?min='0'+min:null;
+	sec<10?sec='0'+sec:null;
+	console.log('YYYY-MM-DD HH:MM:SS', year+'-'+month+'-'+day+' '+hour+':'+min+':'+sec);
+
+// 案例：日期比较, 先转化为时间戳再进行比较
+var date1 = new Date();
+var date2 = new Date(2018, 09, 09, 09, 09, 09);
+	date1 = +date1;
+	date2 = +date2;
+	return date1>date2?'大于':'小于或等于'
+```
+
 ---
 ## 第十单元 单元DOM基础与事件基础
 ### 第一节课：节点和节点层次关系
+> * dom树的概念
+![dom](../assets/dom.png)
+> * dom节点的概念
+> * dom节点的分类
+> * dom节点间的关系
+	* 父子节点
+	* 兄弟节点
+	* 后代节点
+![node-relation](../assets/relation.png)
+
 ### 第二节课：查找结点方式
+> * 返回值为单一dom的
+	* getElementById()
+	* querySelector()
+> * 返回值为dom数组的
+	* getElementsByTagName()
+	* getElementsByName()
+	* getElementsByClassName()
+	* querySelectorAll()
+> * 伪数组的概念
 ### 第三节课：节点属性一
+> * nodeName
+> * nodeValue
+> * nodeType, 常见的1，2，3
+	* 1为元素
+	* 2为属性名称
+	* 3为文本
+```js
+// nodeType示例
+var p = document.createElement('p');
+	p.className = 'active';
+	p.innerText = 'nodeType示例';
+
+	p.nodeType = 1;
+	p.attributes.class.nodeType = 2;
+	p.childNodes[0].nodeType = 3;
+```
+
 ### 第四节课：节点属性二
+> * firstChild
+> * lastChild
+> * parentNode
+> * childNodes
+```js
+// 结合组件间元素关系，实现组件父子元素和兄弟元素的获取
+```
 ---
