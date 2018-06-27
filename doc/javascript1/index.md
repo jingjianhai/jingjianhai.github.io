@@ -540,3 +540,85 @@ var p = document.createElement('p');
 // 结合组件间元素关系，实现组件父子元素和兄弟元素的获取
 ```
 ---
+
+## 第十一单元：css属性与HTML属性操作
+### 第一节课：行内样式与class类样式
+> * element.style属性
+> * element.style.cssText属性
+> * element.className属性, 可以直接修改class
+> * element.classList
+	* add()		增加class类
+	* remove()  移除class类
+> * 样式的优先级
+	* !important
+	* 行内样式大于class类样式
+	* id>class>tag
+### 第二节课：元素属性
+> * element.attributes属性
+> * element.getAttribute()
+> * element.setAttribute()
+> * element.removeAttribute()
+### 第三节课：DOM事件处理程序
+> * DOM0级事件处理
+	* 标签内写onclick事件
+	* js中绑定onclick事件
+> * DOM2级事件处理
+	* 事件捕获和冒泡
+	* DOM事件流
+	* chrome下的：addEventListener,removeEventListener
+	* ie下的：attachEvent,detachEvent 
+### 第四节课：文档写入与插入标记
+> *  document.write
+	* 插入文本
+	* 插入标签
+> * element.innerHTML
+> * element.innerText
+> * element.innerHTML与element.innerText的区别与联系
+	* innerHTML既能插入标签也能插入文本
+	* innerText只能插入文本，标签会被解析为文本
+---
+## 第十二单元：DOM树与节点方法
+### 第一节课：创建节点的方法
+> * 创建文本节点： creareText
+> * 创建元素节点： createElement
+	* link元素
+	* script元素
+	* img元素
+	* 普通元素
+```js
+// 图片懒加载
+var img = document.createElement('img');
+img.onload = function(){
+	document.body.append(im);
+}
+img.src = '图片地址';
+```
+### 第二节课：节点的追加与替换
+> * appendChild()
+> * insertChild()
+> * replaceChild()
+
+### 第三节课：节点的遍历
+> * 获取节点列表的DOM操作
+	* getElementsByTagName()
+	* getElementsByName()
+	* getElementsByClassName()
+	* querySelectorAll()
+> * 获取节点列表的length属性
+> * 使用for循环遍历节点列表，获取每一个节点
+
+### 第四节课：删除节点
+> * 删除普通节点removeChild()
+> * 删除文本节点，需要判断nodeType==3
+```js
+function deleteSpace(node){
+	var childs = node.childNodes;
+	for(var i = 0;i < childs.length;i ++){
+		if(childs[i].nodeType === 3 && /^\s+$/.test(childs[i].nodeValue)){
+			node.removeChild(childs[i]);
+		}
+	}
+	return node;
+}
+```
+---
