@@ -30,6 +30,7 @@
 > * 了解Array（数组类型）和Object（对象类型）    
 
 介绍类型的时候注意，要先解释类型单词的英文释义
+
 ### 第四节课：基础算术表达式
 <!-- 课程内容 -->
 > * **+、—、*和/** 基本算术运算符
@@ -137,6 +138,7 @@ if (条件一){
 	若条件一为假且条件二也为假，则执行这里面的语句
 }
 ```
+
 ### 第二节课：switch语句
 	switch里的条件匹配后续哪一个case，就执行该case内的语句
 
@@ -148,6 +150,7 @@ switch(条件){
 	default: {都没匹配到时的代码逻辑}
 }
 ```
+
 ### 第三节课：if...else, switch语句的综合应用：计算器
 ```js
 var	num1 = 1,  
@@ -209,6 +212,7 @@ console.log('result...', result);
 	* 循环条件
 	* 循环体
 	* 循环次数
+
 ### 第二节课：循环中的for语句
 > * for循环的使用
 > * for循环的嵌套
@@ -226,6 +230,7 @@ for (var i=1;i<10;i++){
 	console.log(str);
 }
 ```
+
 ### 第三节课：循环中的while语句
 > * while循环的使用
 > * while循环的嵌套
@@ -239,6 +244,7 @@ while(i<=10){
 	i++;
 }
 ```
+
 ### 第四节课：break和continue
 > * 跳出当前循环，不再执行循环操作用break
 > * 跳过当前循环，执行下一条循环用continue
@@ -271,6 +277,7 @@ for (var i=0;i<=10;i++){
 > * 什么是函数？
 > * 函数的命名
 > * 函数的声明和函数表达式的写法及区别
+
 ### 第二节课：函数的定义
 > * 函数的参数？
 	* 形参
@@ -278,6 +285,7 @@ for (var i=0;i<=10;i++){
 	* arguments
 > * 函数的返回值
 > * return 语句
+
 ### 第三节课：函数的调用与自执行函数
 > * 函数的调用，如：func()
 > * 函数的重载
@@ -290,6 +298,7 @@ for (var i=0;i<=10;i++){
 > * 函数的闭包
 > * 闭包函数的意义及用途
 ---
+
 ## 第六单元 String与Number
 ### 第一节课：字符串创建
 > * 什么是字符串
@@ -410,14 +419,17 @@ uniqItem(5);
 ### 第一节课：数组查找和翻转
 > * indexOf
 > * lastIndexOf
+
 ### 第二节课：数组排序一
 > * 冒泡排序
 > * 选择排序
 > * 插入排序
+
 ### 第三节课：数组排序二
 > * 快速排序
 > * 原生sort排序
 > * 各排序之间的简单对比
+
 ### 第四节课：数组迭代方法
 > * forEach 
 > * map
@@ -425,6 +437,7 @@ uniqItem(5);
 > * some
 > * every
 ---
+
 ## 第九单元 日期和时间
 ### 第一节课：认识日期对象
 > * 什么是日期对象？
@@ -433,17 +446,19 @@ uniqItem(5);
 	* new Date(milliseconds)
 	* new Date(year, month, day, hours, minutes, seconds, milliseconds)
 > * 时间戳的概念, 注意时间戳的最小单位，js是到毫秒，大多数服务端脚本是精确到秒
-> * 隐式转换
+> * 隐式转换， 比如+、-可以直接把时间对象转为number
 ```js
 	// 直接把日期对象转化为时间戳
 	+ new Date();
 ```
+
 ### 第二节课：日期对象继承对象的方法
 > * toLocaleString()
 > * toString
 > * valueof
 > * setTimeout
 > * setInterval
+
 ### 第三节课：日期的方法一
 > * getFullYear()
 > * setFullYear()
@@ -513,6 +528,7 @@ var date2 = new Date(2018, 09, 09, 09, 09, 09);
 	* getElementsByClassName()
 	* querySelectorAll()
 > * 伪数组的概念
+
 ### 第三节课：节点属性一
 > * nodeName
 > * nodeValue
@@ -520,6 +536,7 @@ var date2 = new Date(2018, 09, 09, 09, 09, 09);
 	* 1为元素
 	* 2为属性名称
 	* 3为文本
+
 ```js
 // nodeType示例
 var p = document.createElement('p');
@@ -553,11 +570,13 @@ var p = document.createElement('p');
 	* !important
 	* 行内样式大于class类样式
 	* id>class>tag
+
 ### 第二节课：元素属性
 > * element.attributes属性
 > * element.getAttribute()
 > * element.setAttribute()
 > * element.removeAttribute()
+
 ### 第三节课：DOM事件处理程序
 > * DOM0级事件处理
 	* 标签内写onclick事件
@@ -567,6 +586,7 @@ var p = document.createElement('p');
 	* DOM事件流
 	* chrome下的：addEventListener,removeEventListener
 	* ie下的：attachEvent,detachEvent 
+
 ### 第四节课：文档写入与插入标记
 > *  document.write
 	* 插入文本
@@ -585,6 +605,7 @@ var p = document.createElement('p');
 	* script元素
 	* img元素
 	* 普通元素
+
 ```js
 // 图片懒加载
 var img = document.createElement('img');
@@ -610,6 +631,7 @@ img.src = '图片地址';
 ### 第四节课：删除节点
 > * 删除普通节点removeChild()
 > * 删除文本节点，需要判断nodeType==3
+
 ```js
 function deleteSpace(node){
 	var childs = node.childNodes;
