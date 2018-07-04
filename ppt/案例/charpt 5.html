@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>charpt5 函数</title>
+</head>
+<body>
+	<script>
+		// 函数封装实现hello，world
+		function fun1(val1, val2){
+			console.log(val1+val2);
+		}
+		fun1('Hello ', 'World!');
+
+		// 函数返回值
+		function fun2(){
+			return 5;
+		}
+		console.log(fun2());
+
+		// 介绍arguments，根据函数参数处理不定长参数长度的业务逻辑
+		function add(){
+			if (arguments.length == 1){
+				console.log(arguments[0]);
+			}else if(arguments.length == 2){
+				console.log(arguments[0]+arguments[1]);
+			}else if(arguments.length == 3){
+				console.log(arguments[0]+arguments[1]+arguments[2]);
+			}else if(arguments.length == 4){
+				console.log(arguments[0]+arguments[1]+arguments[2]+arguments[3]);
+			}
+		}
+		add(10);
+		add(10, 20);
+		add(10, 20, 30);
+		add(10, 20, 30, 40);
+
+
+		// 理解函数作用域
+		// 函数的块级作用域，只允许在函数内部访问，在函数外访问不到		
+		function foo(){
+			var x = 1;
+			x = x + 1;
+		}
+		console.log(x);
+
+		// 闭包
+		// 隐藏变量不被外部获取,如下面示例访问不到outFun内部的a变量，只有inFun能访问到
+		function outFun(){
+			var a = 0;
+			return function inFun(){
+				a++;
+				console.log('a...', a);
+			}
+		}
+		var func = outFun();
+	</script>
+</body> 	 	
+</html>

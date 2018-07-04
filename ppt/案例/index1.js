@@ -1,0 +1,1 @@
+console.log('我来自Javascript的引用方式');
