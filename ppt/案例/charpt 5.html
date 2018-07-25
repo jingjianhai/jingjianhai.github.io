@@ -41,7 +41,7 @@
 			var x = 1;
 			x = x + 1;
 		}
-		console.log(x);
+		// console.log(x);
 
 		// 闭包
 		// 隐藏变量不被外部获取,如下面示例访问不到outFun内部的a变量，只有inFun能访问到
@@ -53,6 +53,80 @@
 			}
 		}
 		var func = outFun();
+
+		class Base{
+			isEmpty(param){
+				if (typeof param == 'object' && param.length === undefined){
+					//对象
+					let len = Object.keys(param).length;
+					if (len){
+						console.log('此对象有多少项数据：', len);
+					}else{
+						console.log('此对象为空对象');
+					}
+				}else if(typeof param == 'object' && param.length !== undefined){
+					if (param.length){
+						console.log('此数组有多少项数据：', param.length);
+					}else{
+						console.log('此数组为空数组');
+					}
+				}
+			}
+		}
+
+		class Util extends Base{
+			constructor(params){
+				super();
+			}
+
+			loadJs(){
+				return new Promise((resolve, reject)=>{
+					var js = document.createElement('script');
+					js.onload = resolve;
+					js.onerror = reject;
+					js.src = './index1.js';
+					document.body.append(js);
+				})
+			}
+
+			loadCss(){
+				return new Promise((resolve, reject)=>{
+					var link = document.createElement('link');
+					link.onload = resolve;
+					link.onerror = reject;
+	    			link.rel = "stylesheet";
+	                link.type = "text/css";
+					link.href = './index.css';
+					document.body.append(link);	
+				})
+			}
+
+			loadImg(){
+				return new Promise((resolve, reject)=>{
+					var img = new Image();
+					img.onload = ()=>{
+						resolve(img);
+					}
+					img.onerror = reject;
+					img.src = './img3.jpg';
+				})
+			}
+
+			async init(arr){
+				let js = this.loadJs(arr[0]);
+				console.log('js加载完毕');
+				let css = this.loadJs(arr[1]);
+				console.log('css加载完毕');
+				let img = this.loadJs(arr[2]);
+				console.log('img加载完毕');
+				return img;
+			}
+		}
+		var util = new Util();
+		util.isEmpty([{a:1},{b:2}]);
+		util.init(['./index.js', './index.css', './index.img']).
+		then(res=>document.body.append(res));
 	</script>
+
 </body> 	 	
 </html>

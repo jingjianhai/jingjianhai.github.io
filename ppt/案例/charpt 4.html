@@ -17,6 +17,7 @@
 			1*8=8 2*8=16 3*8=24 4*8=32 5*8=40 6*8=48 7*8=56 8*8=64 	
 			1*9=9 2*9=18 3*9=27 4*9=36 5*9=45 6*9=54 7*9=63 8*9=72 9*9=81 
 		 */
+		// 9*9乘法表
 		for (var i=1;i<=9;i++){
 			var row = '';
 			for (var j=1;j<=i;j++){
@@ -24,6 +25,42 @@
 			}
 			console.log(row);
 		}
+
+		// 8*8乘法表
+		for (var i=1;i<=9;i++){
+			var row = '';
+			for (var j=1;j<=i;j++){
+				row += j+'*'+i+'='+i*j+' ';
+			}
+			console.log(row);
+		}
+
+		func1(9);
+		func2(9);
+		// 乘法表生成函数,函数声明式写法
+		function func1(end){
+			for (var i=1;i<=end;i++){
+				var row = '';
+				for (var j=1;j<=i;j++){
+					row += j+'*'+i+'='+i*j+' ';
+				}
+				console.log(row);
+			}
+		}
+		// 乘法表生成函数,函数表达式写法
+		var func2 = function(end){
+			for (var i=1;i<=end;i++){
+				var row = '';
+				for (var j=1;j<=i;j++){
+					row += j+'*'+i+'='+i*j+' ';
+				}
+				console.log(row);
+			}
+		}
+		// 8*8乘法表
+		func(8);
+		// 9*9乘法表
+		func(9);
 
 		// 使用while循环使用9*9乘法表
 		var i = 1;
