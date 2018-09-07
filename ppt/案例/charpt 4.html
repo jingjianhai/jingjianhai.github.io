@@ -35,27 +35,19 @@
 			console.log(row);
 		}
 
-		func1(9);
-		func2(9);
-		// 乘法表生成函数,函数声明式写法
-		function func1(end){
-			for (var i=1;i<=end;i++){
-				var row = '';
-				for (var j=1;j<=i;j++){
-					row += j+'*'+i+'='+i*j+' ';
-				}
-				console.log(row);
-			}
+		func1();		=> 调用正常,输出'hello world!'
+		func2();		=> Uncaught TypeError: func2 is not a function
+		// 'hello world!'函数声明式写法
+		function func1(){
+			console.log('hello world!');
 		}
-		// 乘法表生成函数,函数表达式写法
-		var func2 = function(end){
-			for (var i=1;i<=end;i++){
-				var row = '';
-				for (var j=1;j<=i;j++){
-					row += j+'*'+i+'='+i*j+' ';
-				}
-				console.log(row);
-			}
+		// 'hello world!'函数表达式写法
+		var func2 = function(){
+			console.log('hello world!');
+		}
+
+		var func = funtion(){
+			console.log('hello world!');
 		}
 		// 8*8乘法表
 		func(8);
