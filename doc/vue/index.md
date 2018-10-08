@@ -247,7 +247,39 @@ Math.pow() | 代表求次方值
     
         1.箭头函数不是一个构造器(构造函数),不可以实例化
         
-        
+###  数据的深浅拷贝
+
+> 数组深浅拷贝
+
+    var arr = [1,2,3,4,5];
+    arr2 = arr
+    浅拷贝 === 直接赋值
+    
+    // 深拷贝
+    1. arr.slice()
+    2. arr.concat()
+    3. [...arr]
+    
+> 对象深浅拷贝
+
+    浅拷贝 === 直接赋值
+    
+    // 深拷贝
+    1. object.assign({},obj1,obj2)
+    2. {...obj}
+    
+> 对于混合引用的深拷贝: JSON.stringify() JSON.parse()S
+
+    var obj = {a: [1,2,3]}
+    var obj2 = object.assign({},obj)
+    obj.a === obj2.a   // true
+    obj === obj2      // false
+    
+    // 对于混合的类型做深拷贝
+    var str = JSON.stringify(obj);
+    var obj3 = JSON.parse(str)
+    obj.a === obj2.a   // false
+    obj === obj2      // false       
         
 ##### 双冒号：
     ::  左边是对象、右边是方法
@@ -317,9 +349,62 @@ Math.pow() | 代表求次方值
 ### 定义变量的关键字
     var let const import function class
 
+### 变量
+
+    var,let,const
+    如何用es5实现一个const
+    对象的属性：enumerable是否可被枚举,writable是否可以被修改
+    
+    var obj = {name: '1600', age: 15};
+    设置name不可被枚举
+    object.defineProperty(obj, 'name', {enumerable: false})
+    for(let k in obj){
+        console.log(k, obj[k])
+    }
+    
+    设置age不可被修改
+    object.defineProperty(obj, 'age', {writable: false, value: 100})
+    obj.age = 100
+    console.log(obj.age)
+
 ### 通过class关键字来定义一个类
 
 ### promise
+
+> Promise是一个状态机
+
+    三个状态:   
+     pendding创建,
+     fulfilled执行,
+     rejected执行失败
+    当执行resolve的时候由pendding变为fulfilled的时候执行then里面的resolve
+    当执行reject的时候由pendding变为rejected的时候执行then里面的reject
+     
+    二个参数:resolve reject
+    四个静态方法:all, race, resolve, reject
+        // all
+        只有当所有promise状态变化为fullfilled的时候才执行第一个函数
+        // race
+        只要任意一个Promise执状态改变的时候就结束后续执行
+    
+    错误捕捉：catch
+    链式调用：then
+    
+    
+    promise(立即调用)在函数中
+        1. 提高复用性
+        2. 改变时序
+        
+> async/await
+
+    async表明该函数一个异步函数
+    async执行函数
+        async函数里面可以没有异步语句（await）
+    await修饰语句
+        await只能用在async函数里面
+    执行时序:可以阻塞后续语句的执行
+    await表达式的返回值: await后边promise变成fulfilled状态后resolve调用时传的参数
+    
     new Promise((resolve,reject)=>{
         // do some async
         if(true){
@@ -352,7 +437,11 @@ Math.pow() | 代表求次方值
     //必须在constructor中调用super()方法
     
     constructor就是当前类的构造函数
-    
+
+### Promise
+
+
+
 ##### promise.all() 等待所有的异步处理完成的时候，再去处理的一个方法
     promise.all() 会包装多个实例成为一个新的promise实例对象
   
@@ -1120,7 +1209,68 @@ Math.pow() | 代表求次方值
             prefix: "__jp"
         });
     }
+
+### 数据请求+跨域
+
+> 版本号
+
+    x.y.z
+    x===主版本号
+    y===副版本号
+    z===bugx修复
     
+> SPA
+    
+    single page application  单页面应用
+    multiple page多页面
+    SSR sever side bender服务端渲染
+    SEO 搜索引擎优化  (提高搜索次数)
+    
+> file-loader  大的直接加载
+url-loader  < 10k   base64转换一下
+
+
+computed 读 （缓存）
+watch 写
+methods (必须加小括号)
+
+
+> 请求数据
+
+    1.fetch
+        res=>res.json()
+        polyfill
+    2.axios         是XMLHttpRequest对象
+    返回值promise
+    前后端
+    3.ajax是XMLHttpRequest对象
+    onReadyStatusChange
+    回调方式
+ 
+> 跨域的几种方式
+
+    charles 
+    jsonp 返回函数
+    devserver proxy
+    虚拟域名
+    coRs
+    proxy
+    
+    
+> 虚拟域名
+    
+    记事本=>以管理员的身份打开=> 点击文件打开=> C:\Windows\System32\drivers\etc(选择所有文件)=> 打开hosts=> 进行改变
+    小型的DNS
+    127.0.0.1  localhost(虚拟域名)
+    
+    => 在webpack中设置port:80,disableHostCheck: true
+    
+> 端口
+
+    http: 80
+    https: 443
+    ftp: 22
+
 ### vue-swiper
 
 > vue-swiper基于swiper4
@@ -1337,3 +1487,113 @@ route相当于当前正在跳转的路由对象。。可以从里面获取name,p
 打印this.$route和this.$router，两个同时存在。
 
 两者传参方式相同
+
+
+## 第十一部分Vuex
+
+> vuex
+
+1. 下载vuex
+
+        cnpm i -D vuex
+
+2. 创建store文件夹
+
+        // index.js
+    
+        import Vue from 'vue'
+        import Vuex from 'vuex'
+        // 引入module
+        import app from './module/app'
+        // 记录mutation,相当于redux-logger的作用
+        import Logger from 'vuex/dist/logger'
+        
+        Vue.use(Vuex)
+        
+        // 生成一个vuex实例
+        export default new Vuex.Store({
+          modules:{
+            app
+          },
+          state:{
+            a:545 // 默认state 
+          },
+          plugins:[Logger()]
+        })
+    
+        // module文件夹(用于存放所需模块数据)
+        // 初始化数据
+        // 初始化数据
+        const state = {
+          num: 100
+        }
+        // 派生数据
+        const getters = {
+          doubleNum(state){
+            return state.num * 2
+          }
+        }
+        // 同步改变
+        const mutations = {
+          changeNum(state,payload){
+            state.num = payload;
+          }
+        }
+        // 异步改变
+        const actions = {
+          changeNumAsync({commit},payload){ // commit在context中解构出来 
+            // console.log(context,payload)
+            commit('changeNum',payload)
+          }
+        }
+        export default {
+          // 命名空间
+          namespaced:true,
+          getters,
+          state,
+          actions,
+          mutations
+        }
+
+3. 在main.js中引入store
+    
+        import Vue from 'vue'
+        import App from './App.vue'
+        import store from './store'
+        
+        new Vue({
+          el: '#app',
+          store,
+          render: h => h(App)
+        })
+
+4. 使用
+
+        <template>
+            <div id="app">
+                <button @click="changeNum('+')">+</button>
+                <span>{{num}}</span>
+                <button @click="changeNum('-')">-</button>
+          </div>
+        </template>
+        <script>
+          export default {
+            computed:{
+                num(){
+                  return this.$store.state.app.num
+                }
+            },
+            methods:{
+              changeNum(type){
+                if(type=='+'){
+                  this.$store.commit('changeNum',this.num+1)
+                }else{
+                    this.$store.commit('changeNum',this.num-1)
+                }
+              }
+            },
+            mounted() {
+              console.log(this.$store.state,this.$store.getters.doubleNum);
+            }
+          }
+        </script>
