@@ -23,6 +23,30 @@
 	msg： '登陆成功'
 }
 ```
+#### 获取用户信息接口
+```js
+@url get  /user/info
+@return {
+	code: 1
+  data:{
+    address: "轨顶风道111"
+    avatar: "http://123.206.55.50:11000/static/UT5B4pk0uNPqsPZkEKI4Epna.jpg"
+    city: "太原市"
+    create_time: "1540189715161"
+    email: "503032527@qq.com"
+    id: 26
+    name: "chenmanjie"
+    phone: "15712892269"
+    profile: "打算放假肯定发酒店客房酒店客房11111"
+    province: "山西省"
+    status: 1
+    type: 1
+    userid: 26
+    username: "chenmanjie"
+  },
+  msg: "获取用户信息成功"
+}
+```
 
 #### 注册接口
 ```js
@@ -250,11 +274,12 @@
 {
   sid: 1, // 店铺的id
   img: '',
+  name: "活着",
   num: 100,
   info: '讲诉一个地主的悲惨生活，从一个地主到破产，到身边的亲人一个个离他而去，留下他自己和一头老黄牛的故事',
   price: 3
 }
-@url  post /goods/update
+@url  post /goods/add
 @return {
   code: 1,
   data: {},
@@ -278,13 +303,14 @@
   msg: '更改物品成功'
 }
 ```
-#### 下架物品功能
+#### 上架/下架物品功能
 ```js
 @param gid  物品的id
+@param status 可选  物品状态，1为上架2为下架 
 @url  get /goods/close
 @return {
   code: 1,
   data: {},
-  msg: '下架物品成功'
+  msg: '上架/下架物品成功'
 }
 ```
