@@ -7,9 +7,9 @@
     <div class="page-edit">
       <div class="edit-link" v-if="editLink"
       >
-          <a
-          :href="rawLink" target="_blank" rel="noopener noreferrer">查看原文</a>
-          |  <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
+          <!-- <a
+          :href="rawLink" target="_blank" rel="noopener noreferrer">查看原文</a> -->
+          <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
         <OutboundLink/>
       </div>
 

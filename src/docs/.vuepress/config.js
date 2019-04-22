@@ -26,13 +26,17 @@ module.exports = {
   theme: 'vue',
   themeConfig: {
     repo: 'jasonandjay/jasonandjay.github.com',
-    editLinks: true,
+
     docsDir: 'src/docs',
+    editLinks: true,
+   
     locales: {
       '/': {
         label: '简体中文',
+        repo: 'jasonandjay/jasonandjay.github.com',
+      
         selectText: '选择语言',
-        editLinkText: '编辑此页',
+        editLinkText: '帮助我们改进内容',
         lastUpdated: '上次更新',
         nav: [
           {
@@ -83,7 +87,6 @@ module.exports = {
           //     { text: 'Japanese', link: '/language/japanese' }
           //   ]
           // },
-         
           // {
           //   text: '配置参考',
           //   link: '/config/'
