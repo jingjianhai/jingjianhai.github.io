@@ -25,9 +25,9 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'jasonandjay',
+    repo: 'jasonandjay/jasonandjay.github.com',
     editLinks: true,
-    docsDir: 'jasonandjay/src/docs',
+    docsDir: 'src/docs',
     locales: {
       '/': {
         label: '简体中文',
