@@ -2,7 +2,7 @@
 home: true
 heroImage: /avatar.png
 actionText: Let`s Go →
-actionLink: /guide/
+actionLink: /zh/standard/Start.html
 sidebarDepth: 2
 sidebar: auto
 footer: MIT Licensed | Copyright © 1970-present Jasonandjay
