@@ -27,7 +27,7 @@ module.exports = {
   themeConfig: {
     repo: 'jasonandjay',
     editLinks: true,
-    docsDir: 'docs',
+    docsDir: 'jasonandjay/src/docs',
     locales: {
       '/': {
         label: '简体中文',
